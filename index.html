@@ -478,8 +478,6 @@
 
         let water;
 
-        let waterLevel = 2;
-
         let climate = 0;
 
         
@@ -498,7 +496,9 @@
 
             seed: 1234,
 
-            resolution: 100
+            resolution: 100,
+
+            water: 2
 
         };
 
@@ -672,7 +672,7 @@
 
                 
 
-                if (biome === 0){ // grassland
+                if (climate === 0){ // grassland
 
                     if(height < 2) color.setHex(0x8B7355);
                     
@@ -684,7 +684,7 @@
 
                 }
 
-                if (biome === 1){ // desert
+                if (climate === 1){ // desert
 
                     if(height < 5) color.setHex(0xd9c28f);
                     
@@ -694,7 +694,7 @@
 
                 }
 
-                if (biome === 2){ // snow
+                if (climate === 2){ // snow
 
                     if(height < 4) color.setHex(0x6b8ba4);
                     
@@ -753,7 +753,7 @@
             
             water.rotation.x = -Math.PI / 2;
             
-            water.position.y = waterLevel;
+            water.position.y = params.water;
 
             scene.add(water);
 
@@ -916,6 +916,8 @@
                 params.lacunarity = Math.random() * 3 + 1;
 
                 params.seed = Math.floor(Math.random() * 9999);
+
+                params.water = Math.random() * 15 - 5; //randomize water level
 
 
 
